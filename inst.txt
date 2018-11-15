@@ -1,0 +1,27 @@
+
+sudo pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip --no-cache-dir install flask
+export FLASK_APP=web.py
+pip --no-cache-dir install python-dotenv
+pip --no-cache-dir install flask-wtf
+pip --no-cache-dir install flask-sqlalchemy
+pip --no-cache-dir install flask-migrate
+pip --no-cache-dir install flask-login
+
+flask db init
+flask db migrate -m "users table"
+flask db upgrade
+
+ch5
+flask shell
+u = User(username='susan', email='susan@example.com')
+u.set_password('cat')
+db.session.add(u)
+db.session.commit()
+
+
+ip freeze > requirements.txt
+pip install -r requirements.txt
+-
